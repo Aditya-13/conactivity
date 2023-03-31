@@ -5,8 +5,7 @@
   "main": "scrape.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node scrape.js",
-    "start-module": "node src/scripts/index.js"
+    "start": "node src/scrape.js"
   },
   "author": "",
   "license": "ISC",
@@ -18,7 +17,7 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "jsonfile": "^6.0.1",
-    "puppeteer": "^5.2.1",
+    "puppeteer": "^19.8.2",
     "rxjs": "^7.4.0"
   },
   "devDependencies": {
