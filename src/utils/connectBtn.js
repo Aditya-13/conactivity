@@ -3,10 +3,8 @@ const {
   threeDotsfn,
   connectBtnInDotsFn,
   inviteMessageModalfn,
-  noteAddBtnFn,
-  textAreafn,
-  sendBtnfn,
 } = require("./selectors/allSelectors");
+const { textAreaFill } = require("./textAreaFill");
 
 const findConnectBtn = async (page, name) => {
   try {
@@ -26,21 +24,9 @@ const findConnectBtn = async (page, name) => {
           const msgModal = await inviteMessageModalfn(page);
 
           if (msgModal.length) {
-            const noteAddBtn = await noteAddBtnFn(page);
+            const result = await textAreaFill(page);
 
-            await noteAddBtn[0].click();
-
-            const textArea = await textAreafn(page);
-
-            await textArea[0].type(
-              `Hey there! I came across your profile and was impressed by your experience. Let's connect and explore our shared interests.`
-            );
-
-            const sendButton = await sendBtnfn(page);
-
-            await sendButton[0].click();
-
-            return true;
+            return result;
           } else {
             return false;
           }
@@ -56,21 +42,9 @@ const findConnectBtn = async (page, name) => {
       const msgModal = await inviteMessageModalfn(page);
 
       if (msgModal.length) {
-        const noteAdd = await page.$$(`button[aria-label="Add a note"]`);
+        const result = await textAreaFill(page);
 
-        await noteAdd[0].click();
-
-        const textArea = await textAreafn(page);
-
-        await textArea[0].type(
-          `Hey there! I came across your profile and was impressed by your experience. Let's connect and explore our shared interests.`
-        );
-
-        const sendButton = await sendBtnfn(page);
-
-        await sendButton[0].click();
-
-        return true;
+        return result;
       } else {
         return false;
       }

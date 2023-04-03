@@ -2,7 +2,6 @@ const { findConnectBtn } = require("./connectBtn");
 const { alreadySentfn } = require("./selectors/allSelectors");
 
 async function connectWithId(page, activeProfiles) {
-  const recordOfSent = [];
   // Loop through each link and open a new page
   for (const link of activeProfiles) {
     await page.goto(link, {
@@ -33,8 +32,6 @@ async function connectWithId(page, activeProfiles) {
       continue;
     }
   }
-
-  console.log(recordOfSent);
 }
 
 module.exports = connectWithId;
